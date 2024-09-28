@@ -443,7 +443,9 @@ namespace Server
 		public static int S_SpawnMin = 45;
 		public static int S_SpawnMax = 60;
 
-
+	// This settings controls the limit in seconds by which you can be paralyzed by a monster. 
+	// The default is 15 seconds.
+		public static double S_paralyzeDuration = 15.0;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
