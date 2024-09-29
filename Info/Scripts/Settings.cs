@@ -309,7 +309,11 @@ namespace Server
 
 		public static bool S_WarnBottleCity = false;
 
+	// If set to true, then obtrusive traps (like item-deleting, teleporting, spellbook-locking,
+	//item-dropping, turn coins to lead, remove fama and invert karma) will trigger normally in game.
+	// If set to false, they will never trigger. 
 
+		public static bool S_deadlyTrapsEnabled = true; 
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
