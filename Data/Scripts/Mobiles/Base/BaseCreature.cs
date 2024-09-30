@@ -988,7 +988,7 @@ namespace Server.Mobiles
 				Effects.SendLocationEffect( blast1, target.Map, 0x10D3, 30, 10, 0, 0 );
 				target.PlaySound( 0x62D );
 				// feature/0001 - caps paralize duration for what was set in MySettings.S_paralyzeDuration
-				double webbed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? ((double)(this.Fame/200)) : MySettings.S_paralyzeDuration;
+				double webbed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? MySettings.S_paralyzeDuration : ((double)(this.Fame/200));
 				target.Paralyze( TimeSpan.FromSeconds( webbed ) );
 			}
 			else if ( form == 7 ) // GIANT STONES AND LOGS ------------------------------------------------------------------------------------------
@@ -1274,7 +1274,7 @@ namespace Server.Mobiles
 				BreathDistance = 3;
 
 				// feature/0001 - caps paralize duration for what was set in MySettings.S_paralyzeDuration.
-				double weed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? ((double)(this.Fame/200)) : MySettings.S_paralyzeDuration;
+				double weed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? MySettings.S_paralyzeDuration : ((double)(this.Fame/200));
 				target.Paralyze( TimeSpan.FromSeconds( weed ) );
 			}
 			else if ( form == 35 ) // SMALL WEED BREATH ---------------------------------------------------------------------------------------------
@@ -1284,7 +1284,7 @@ namespace Server.Mobiles
 				BreathDistance = 2;
 
 				// feature/0001 - caps paralize duration for what was set in MySettings.S_paralyzeDuration.
-				double weed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? ((double)(this.Fame/200)) : MySettings.S_paralyzeDuration;
+				double weed = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? MySettings.S_paralyzeDuration : ((double)(this.Fame/200));
 				target.Paralyze( TimeSpan.FromSeconds( weed ) );
 			}
 			else if ( form == 36 ) // ACID SPLASH ---------------------------------------------------------------------------------------------------
@@ -1303,7 +1303,7 @@ namespace Server.Mobiles
 				Effects.SendLocationEffect( wrapped, target.Map, 0x23AF, 30, 10, 0, 0 );
 				target.PlaySound( 0x5D2 );
 				// feature/0001 - caps paralize duration for what was set in MySettings.S_paralyzeDuration.
-				double wrap = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? ((double)(this.Fame/200)) : MySettings.S_paralyzeDuration;
+				double wrap = ((double)(this.Fame/200)) > MySettings.S_paralyzeDuration ? MySettings.S_paralyzeDuration : ((double)(this.Fame/200));
 				target.Paralyze( TimeSpan.FromSeconds(wrap) );
 			}
 			else if ( form == 38 ) // SMALL STEAM BREATH --------------------------------------------------------------------------------------------
