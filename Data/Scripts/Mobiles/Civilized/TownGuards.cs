@@ -19,20 +19,37 @@ namespace Server.Mobiles
 		{
 			Title = "the guard";
 			NameHue = 1154;
-			SetStr( 3000, 3000 );
-			SetDex( 3000, 3000 );
-			SetInt( 3000, 3000 );
-			SetHits( 6000,6000 );
-			SetDamage( 500, 900 );
-			VirtualArmor = 3000;
 
-			SetSkill( SkillName.Anatomy, 200.0 );
-			SetSkill( SkillName.MagicResist, 200.0 );
-			SetSkill( SkillName.Bludgeoning, 200.0 );
-			SetSkill( SkillName.Fencing, 200.0 );
-			SetSkill( SkillName.FistFighting, 200.0 );
-			SetSkill( SkillName.Swords, 200.0 );
-			SetSkill( SkillName.Tactics, 200.0 );
+			if(MySettings.S_SuperGuards){
+				SetStr( 3000, 3000 );
+				SetDex( 3000, 3000 );
+				SetInt( 3000, 3000 );
+				SetHits( 6000,6000 );
+				SetDamage( 500, 900 );
+				VirtualArmor = 3000;
+
+				SetSkill( SkillName.Anatomy, 200.0 );
+				SetSkill( SkillName.MagicResist, 200.0 );
+				SetSkill( SkillName.Bludgeoning, 200.0 );
+				SetSkill( SkillName.Fencing, 200.0 );
+				SetSkill( SkillName.FistFighting, 200.0 );
+				SetSkill( SkillName.Swords, 200.0 );
+				SetSkill( SkillName.Tactics, 200.0 );
+			} else{
+				SetStr( 150, 175 );
+				SetDex( 65, 80 );
+				SetInt( 65, 80 );
+				SetHits( 475,700 );
+				VirtualArmor = 70;
+
+				SetSkill( SkillName.Anatomy, 100, 110 );
+				SetSkill( SkillName.MagicResist, 95,105 );
+				SetSkill( SkillName.Bludgeoning, 95,105 );
+				SetSkill( SkillName.Fencing, 95,105 );
+				SetSkill( SkillName.FistFighting, 95,105);
+				SetSkill( SkillName.Swords, 95,105 );
+				SetSkill( SkillName.Tactics, 85,100 );
+			}
 
 			AddItem( new LightCitizen( true ) );
 
@@ -369,10 +386,19 @@ namespace Server.Mobiles
 			}
 
 			weapon.Movable = false;
-			((BaseWeapon)weapon).MaxHitPoints = 1000;
-			((BaseWeapon)weapon).HitPoints = 1000;
-			((BaseWeapon)weapon).MinDamage = 500;
-			((BaseWeapon)weapon).MaxDamage = 900;
+
+			if(!MySettings.S_SuperGuards){
+				((BaseWeapon)weapon).MaxHitPoints = 100;
+				((BaseWeapon)weapon).HitPoints = 100;
+				((BaseWeapon)weapon).MinDamage = 10;
+				((BaseWeapon)weapon).MaxDamage = 13;
+			} else {
+				((BaseWeapon)weapon).MaxHitPoints = 1000;
+				((BaseWeapon)weapon).HitPoints = 1000;
+				((BaseWeapon)weapon).MinDamage = 500;
+				((BaseWeapon)weapon).MaxDamage = 900;				
+			}
+
 			AddItem( weapon );
 
 			Item arms = new RingmailArms();
@@ -514,7 +540,7 @@ namespace Server.Mobiles
 			if ( m.Region != this.Region && !MySettings.S_GuardsPatrolOutside )
 				return false;
 
-			if ( MySettings.S_GuardsSentenceDeath || ( m is BaseCreature && ((BaseCreature)m).ControlMaster == null ) )
+			if ( (MySettings.S_SuperGuards && MySettings.S_GuardsSentenceDeath) || ( m is BaseCreature && ((BaseCreature)m).ControlMaster == null ) )
 			{
 				this.Location = m.Location;
 				this.Combatant = m;
@@ -589,11 +615,16 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			Say("In Vas Mani");
-			this.Hits = this.HitsMax;
-			this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
-			this.PlaySound( 0x202 );
-			return false;
+			if(MySettings.S_SuperGuards){
+				Say("In Vas Mani");
+				this.Hits = this.HitsMax;
+				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
+				this.PlaySound( 0x202 );
+				return false;
+			} else {
+				return true;
+			}
+
 		}
 
 		public TownGuards( Serial serial ) : base( serial ) 

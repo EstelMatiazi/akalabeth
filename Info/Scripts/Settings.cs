@@ -704,7 +704,11 @@ namespace Server
 	// lose some equipment which is limited to stackable items like: potions, bandages, arrows, bolts, 
 	// gems, coins, jewels, crystals, reagents, bottles, food, and water.
 
-		public static bool S_GuardsSentenceDeath = true;
+		public static bool S_GuardsSentenceDeath = false;
+
+	// if true, guards will one-shot or instantly arrest greys/reds, if false, they will be killable and the variable s_GuardsSentenceDeath above will have no effect
+	// default is true
+	public static bool S_SuperGuards = false;
 
 	// If true, guards will pay attention to enemies outside of their town borders.
 

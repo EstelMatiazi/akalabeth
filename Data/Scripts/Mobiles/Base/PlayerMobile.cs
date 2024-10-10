@@ -2346,7 +2346,7 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			if ( !MySettings.S_GuardsSentenceDeath && ( this.LastKiller is TownGuards || ( this.LastKiller is BaseVendor && this.LastKiller.WhisperHue != 999 && !(this.LastKiller is PlayerVendor) && !(this.LastKiller is PlayerBarkeeper) ) ) )
+			if ( (MySettings.S_SuperGuards && !MySettings.S_GuardsSentenceDeath) && ( this.LastKiller is TownGuards || ( this.LastKiller is BaseVendor && this.LastKiller.WhisperHue != 999 && !(this.LastKiller is PlayerVendor) && !(this.LastKiller is PlayerBarkeeper) ) ) )
 			{
 				Land world = Server.Lands.GetLand( Map, Location, X, Y );
 				Point3D p = new Point3D( 1956, 1328, 0 );
