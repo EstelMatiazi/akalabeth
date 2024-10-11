@@ -10,3 +10,4 @@
 # feature/0005 - adds a setting to enable or disable guard super powers, allowing them to be fought
 # feature/0006 - fix resource rarity not being calculated correcly on item drop
 # feature/0007 - display stat caps on info screen
+# feature/0008 - fixes item disappearing after being identified with arms lore
