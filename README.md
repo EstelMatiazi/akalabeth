@@ -8,3 +8,5 @@
 # feature/0003 - changes rarity on vendor bankboxes so that they show more often as items for sale
 # feature/0004 - adds a settings to enable or disable deadly/obnoxious traps from triggering
 # feature/0005 - adds a setting to enable or disable guard super powers, allowing them to be fought
+# feature/0006 - fix resource rarity not being calculated correcly on item drop
+# feature/0007 - display stat caps on info screen
